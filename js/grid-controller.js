@@ -33,3 +33,12 @@ var GridController = function($scope, $http) {
 	$scope.grid = grid;
 	console.log('GridController constructor. fin.');
 };
+var columnController = function(isLeft){
+	var result = function($scope, $http) {
+		console.log('ColumnController constructor. start. isLeft?',isLeft);
+		$scope.ctx = isLeft ? $scope.grid.left : $scope.grid.right;
+	};
+	return result;
+};
+var LeftColumnController = columnController(true);
+var RightColumnController = columnController(false);

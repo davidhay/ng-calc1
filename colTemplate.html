@@ -1,0 +1,11 @@
+<div ng-init="cell=ctx.get($index)"
+             ng-show="cell.used">
+          <input ng-model="cell.value"
+            class="input-small"            
+            placeholder="enter a number"
+            ng-class="{error:!cell.isValid()}"
+            type="text">
+          </input>
+          <button class="btn" ng-show="ctx.length() > 1"
+                  ng-click="ctx.remove($index)">Delete</button>
+        </div>
