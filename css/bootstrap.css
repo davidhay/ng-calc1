@@ -4984,3 +4984,12 @@ a.badge:hover {
 .invisible {
   visibility: hidden;
 }
+
+input[type=text].error {
+  background-color: pink;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+}
