@@ -11,48 +11,43 @@
 </head>
 
 <body ng-controller="GridController">
-  <table>
-    <tr ng-repeat="row in grid.rows">      
+  <table ng-init="left=grid.left;right=grid.right">
+    <tr ng-repeat="row in grid.rows" >      
       <td>
-        <div ng-show="grid.left.get($index).used">          
-          <input ng-model="grid.left.get($index).value" 
+         <div ng-init="lcell=left.get($index)" ng-show="lcell.used">
+          <input ng-model="lcell.value" 
             type="text" size="5" maxlength="5">
           </input>
-          <button ng-show="grid.left.length() > 1"
-                  ng-click="grid.left.remove($index)">Delete</button>
-                  {{grid.left.get($index).value}}
+          <button ng-show="left.length() > 1"
+                  ng-click="left.remove($index)">Delete</button>
         </div>
       </td>
-      <td>&nbsp;</td>
       <td>
-         <div ng-show="grid.right.get($index).used">
-          <input ng-model="grid.right.get($index).value"
+         <div ng-init="rcell=right.get($index)" ng-show="rcell.used">
+          <input ng-model="rcell.value"
             type="text" size="5" maxlength="5">
           </input>
-          <button ng-show="grid.right.length() > 1"
-                  ng-click="grid.right.remove($index)">Delete</button>
-          {{grid.right.get($index).value}}
+          <button ng-show="right.length() > 1"
+                  ng-click="right.remove($index)">Delete</button>
         </div>
      </td>
     </tr>
-    <tr>
+    <tr ng-show="showLeft || showRight">
       <td>
-        <div ng-show="grid.left.length() < 10" >
-          <button ng-click="grid.left.add('')">Add</button>
+        <div ng-show="showLeft" >
+          <button ng-click="left.add('')">Add</button>
         </div>
       </td>
       <td>
-        <div ng-show="grid.right.length() < 10" >
-          <button ng-click="grid.right.add('')">Add</button>
+        <div ng-show="showRight" >
+          <button ng-click="right.add('')">Add</button>
         </div>
       </td>
     </tr>
-    <tr>
-      <td>[{{grid.left.total()}}]</td>
-      <td>&nbsp;</td>
-      <td>[{{grid.right.total()}}]</td>
+    <tr ng-init="showLeft=left.length()<10;showRight=right.length()>10">
+      <td>{{left.total()}}</td>
+      <td>{{right.total()}}</td>
     </tr>
   </table>
-  after table
 </body>
 </html>

@@ -19,7 +19,6 @@ Rows.prototype.isEmpty = function(rowIndex){
 	var row = this.rows[rowIndex];	
 	for(var c=0;c<this.cols && !usedFound;c++){
 		usedFound = row[c].used;
-		console.log('usedFound with',row[c]);
 	}
 	return !usedFound;
 };
@@ -135,4 +134,4 @@ Rows.prototype.colOps = function(col) {
 		used : used
 	};
 };
-console.log('rows loaded!');
+console.log('rows.js loaded.');
