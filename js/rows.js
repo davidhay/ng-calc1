@@ -1,6 +1,43 @@
 var Cell = function() {
-	this.value =-1;
+	this.value = '';
 	this.used = false;
+};
+Cell.prototype.isEmpty = function(){
+	if(!this.used){
+		return true;
+	};
+	if(!this.value){
+		return true;
+	}
+	var val = this.value;
+	if(this.value.trim){
+		val = this.value.trim();
+	}
+	var result = val === '';
+	return result;
+}
+Cell.prototype.isValid = function(){
+	if(this.isEmpty()){
+		return true;
+	}
+	var isNumber = function(n) {
+		isNumber = !isNaN(parseFloat(n)) && isFinite(n);
+		return isNumber;  
+	};
+	var result = isNumber(this.value);
+	if(result){
+		result = this.value >= 0;
+	}else{
+		//console.log('is not a number');
+	}
+	return result;
+};
+Cell.prototype.getNumeric = function(){
+	if(!this.used || this.isEmpty() || !this.isValid()){
+		return 0;
+	};
+	var result = parseFloat(this.value);
+	return result;
 };
 Cell.prototype.swap = function(other) {
 	var value = this.value;
@@ -73,10 +110,10 @@ Rows.prototype._total = function(col) {
 	var total = 0;
 	for ( var i = 0; i < this.rows.length; i++) {
 		var cell = this.rows[i][col];
-		if (cell.used) {
-			total += new Number(cell.value);
-		}
+		total += (1000*cell.getNumeric());
 	}
+	total = total/1000;
+	total = total.toFixed(2);
 	return total;
 };
 Rows.prototype._used = function(col, row) {
