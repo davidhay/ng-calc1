@@ -13,32 +13,8 @@
 <body ng-controller="GridController">
   <table ng-init="left=grid.left;right=grid.right">
     <tr ng-repeat="row in grid.rows" >      
-      <td>
-        <div ng-init="lcell=left.get($index)" ng-show="lcell.used">
-          <input ng-model="lcell.value"
-            class="input-small"            
-            placeholder="enter a number"
-            ng-class="{error:!lcell.isValid()}"
-            type="text">
-          </input>
-          <button class="btn" ng-show="left.length() > 1"
-                  ng-click="left.remove($index)">Delete</button>
-        </div>
-      </td>
-      <td>
-        <div ng-init="rcell=right.get($index)" ng-show="rcell.used">
-          <input ng-model="rcell.value"
-            type="text"            
-            class="input-small" 
-            placeholder="enter a number"            
-            ng-class="{error:!rcell.isValid()}"
-            >
-          </input>
-          <button class="btn" 
-                  ng-show="right.length() > 1"
-                  ng-click="right.remove($index)">Delete</button>
-        </div>
-     </td>
+      <td ng-controller ="LeftColumnController" ng-include src="'colTemplate.html'"  />
+      <td ng-controller="RightColumnController" ng-include src="'colTemplate.html'"  />
     </tr>
     <tr ng-hide="!showLeft && !showRight">
       <td style="text-align:center;">
