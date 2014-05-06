@@ -1,0 +1,7 @@
+color
+interaction with server get/store - maybe for adding numbers (for fun!)
+animations? like jquery
+formatting/parsing the inputs on binding
+css - replace delete with X [icons for good/bad]
+move from tables to bootstrap
+
