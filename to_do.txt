@@ -5,3 +5,6 @@ formatting/parsing the inputs on binding
 css - replace delete with X [icons for good/bad]
 move from tables to bootstrap
 
+tests!
+minification.
+
