@@ -15,13 +15,13 @@ Cell.prototype.isEmpty = function(){
 	}
 	var result = val === '';
 	return result;
-}
+};
 Cell.prototype.isValid = function(){
 	if(this.isEmpty()){
 		return true;
 	}
 	var isNumber = function(n) {
-		isNumber = !isNaN(parseFloat(n)) && isFinite(n);
+		var isNumber = !isNaN(parseFloat(n)) && isFinite(n);
 		return isNumber;  
 	};
 	var result = isNumber(this.value);
@@ -107,14 +107,14 @@ Rows.prototype._length = function(col) {
 	return total;	
 };
 Rows.prototype._total = function(col) {
-	var total = 0;
+	var total = "0";
 	for ( var i = 0; i < this.rows.length; i++) {
 		var cell = this.rows[i][col];
 		total += (1000*cell.getNumeric());
 	}
 	total = total/1000;
-	total = total.toFixed(2);
-	return total;
+	var result = total.toFixed(2);
+	return result;
 };
 Rows.prototype._used = function(col, row) {
 	return this.get(col, row).used;

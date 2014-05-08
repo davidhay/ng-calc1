@@ -1,12 +1,14 @@
 <!doctype html>
-<html lang='en' ng-app="calcApp">
+<html lang='en' ng-app="calcApp" ng-controller="InfoController">
 <head>
-<title>NG APP ONE</title>
+<title>{{params.title}} by {{meta.author}}</title>
 <script
   src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
 <script src="js/rows.js"></script>
 <script src="js/calc-app.js"></script>
+<script src="js/info-controller.js"></script>
 <script src="js/grid-controller.js"></script>
+<script src="js/hello-controller.js"></script>
 
 <link href="css/bootstrap.css" rel="stylesheet">
 </head>
@@ -34,5 +36,11 @@
       <td style="text-align:center;">{{right.total()}}</td>
     </tr>
   </table>
+  
+  <hr/>
+  
+  <div ng-controller="HelloController">
+  	<input ng-model="name" type="text" placeholder="enter your name"></input>{{greet()}}
+  </div>
 </body>
 </html>

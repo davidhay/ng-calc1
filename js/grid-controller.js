@@ -1,5 +1,7 @@
 var app=angular.module('calcApp');   // This syntax get the module
-app.controller('GridController', function($scope, $http, testFactory, testService) {
+app.controller('GridController', function($scope, $http, params, testFactory, testService, meta, initData) {
+	var ROW_LIMIT=params.row_limit;
+
 	console.log('GridController constructor. start.');
 
 	console.log(testFactory.sayHello("f-one"));
@@ -14,14 +16,13 @@ app.controller('GridController', function($scope, $http, testFactory, testServic
 	grid.left = grid.colOps(0);
 	grid.right = grid.colOps(1);
 
-	for(var i=0;i<9;i++){
-		grid.left.add(i+1);	
+	for(var i=0;i<initData.left.length;i++){
+		grid.left.add(initData.left[i]);
 	}
-	for(var i=0;i<1;i++){
-		grid.right.add((i+1)*2);
+	for(var i=0;i<initData.right.length;i++){
+		grid.right.add(initData.right[i]);
 	}
 
-	var ROW_LIMIT=10;
 
 	var showLeft = function(){
 		return grid.left.length() < ROW_LIMIT;
