@@ -1,5 +1,14 @@
-var GridController = function($scope, $http) {
+var app=angular.module('calcApp');   // This syntax get the module
+app.controller('GridController', function($scope, $http, testFactory, testService) {
 	console.log('GridController constructor. start.');
+
+	console.log(testFactory.sayHello("f-one"));
+	console.log(testFactory.sayHello("f-two"));
+	console.log(testFactory.sayHello("f-three"));
+	
+	console.log(testService.sayHello("s-one"));
+	console.log(testService.sayHello("s-two"));
+	console.log(testService.sayHello("s-three"));
 
 	var grid = new Rows(2);
 	grid.left = grid.colOps(0);
@@ -32,13 +41,13 @@ var GridController = function($scope, $http) {
 
 	$scope.grid = grid;
 	console.log('GridController constructor. fin.');
-};
-var columnController = function(isLeft){
+});
+var columnController = function(isLeft) {
 	var result = function($scope, $http) {
-		console.log('ColumnController constructor. start. isLeft?',isLeft);
+		console.log('ColumnController constructor. start. isLeft?', isLeft);
 		$scope.ctx = isLeft ? $scope.grid.left : $scope.grid.right;
 	};
 	return result;
 };
-var LeftColumnController = columnController(true);
-var RightColumnController = columnController(false);
+app.controller('LeftColumnController', columnController(true));
+app.controller('RightColumnController', columnController(false));
